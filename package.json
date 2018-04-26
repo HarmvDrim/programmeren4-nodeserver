@@ -1,15 +1,15 @@
 {
-  "name": "les-2",
+  "name": "les-4",
   "version": "1.0.0",
   "description": "Eerste node server",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js"
+    "start": "nodemon start"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rschellius/programmeren4-nodeserver.git"
+    "url": "git+https://github.com/HarmvDrim/programmeren4-nodeserver.git"
   },
   "keywords": [
     "node",
@@ -18,9 +18,9 @@
   "author": "Robin",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/rschellius/programmeren4-nodeserver/issues"
+    "url": "https://github.com/HarmvDrim/programmeren4-nodeserver/issues"
   },
-  "homepage": "https://github.com/rschellius/programmeren4-nodeserver#readme",
+  "homepage": "https://github.com/HarmvDrim/programmeren4-nodeserver#readme",
   "dependencies": {
     "body-parser": "^1.18.2",
     "express": "^4.16.3",
