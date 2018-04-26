@@ -3,8 +3,8 @@
 //
 const express = require('express')
 const morgan = require('morgan')
-const Person = require('./domain/Person')
 const bodyparser = require('body-parser')
+const person_routes = require('./routes/person-routes')
 
 const app = express()
 const port = process.env.PORT || 3000
@@ -12,7 +12,7 @@ const port = process.env.PORT || 3000
 app.use(morgan('dev'))
 app.use(bodyparser.json())
 
-let personlist = []
+
 
 app.use('*', (req, res, next) => {
 	let httpmethod = req.method
@@ -20,6 +20,8 @@ app.use('*', (req, res, next) => {
 	console.log('We received a ' + httpmethod + ' request on url ' + requesturl)
 	next()
 })
+
+app.use('/api', person_routes)
 
 // Wanneer de gevraagde endpoint niet gevonden is komen we hier.
 app.use('*', (req, res, next) => {
