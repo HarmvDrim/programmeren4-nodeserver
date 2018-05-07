@@ -1,5 +1,6 @@
 
 const Person = require('../domain/Person')
+const assert = require('assert')
 
 let personlist = []
 
@@ -41,22 +42,15 @@ module.exports = {
     deletePersonById(req, res, next){
         console.log('delete was called')
         const id = req.params.id
+        
+        assert(id, 'Parameter id must be provided')
+        assert(!isNaN(id) && id >=0 && id < personlist.length, 'Invalid id')
+        
 
         //delete person met index id uit de personlijst
-        if(id >= 0 && id < personlist.length){
-            // als id geldig is in de personlist: stuur person terug
-            personlist.slice(id, 1)
-            res.status(200).end()
-        } else {
-            // als id niet geldig is: error
-            const error = {
-                error: 'ID does not exist (index out of bounds)'
-            }
-            next(error)
-        }
-        
+        personlist.splice(id, 1)
         //retourneer een statusmessage (en eventueel een bericht)
-        
+        res.status(200).end()
 
     }
 

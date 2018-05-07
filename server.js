@@ -29,20 +29,22 @@ app.use('*', (req, res, next) => {
 	let requesturl = req.baseUrl
 	console.log('We received a ' + httpmethod + ' request on url ' + requesturl)
 
-	const error = {
-		error: 'Endpoint does not exist',
-		url: requesturl
-	}
-	// res.status(404).json(error).end()
-	next(error)
+	next('Endpoint does not exist')
 })
 
 // Als er een next(info) werd aangeroepen komen we hier
 app.use((err, req, res, next) => {
 	console.log('Final error handler: an error occurred')
-	console.log(err)
+	console.log(err.toString())
 
-	res.status(500).json(err).end()
+	let requesturl = req.baseUrl
+
+	const error = {
+		error: err.toString(),
+		url: requesturl
+	}
+
+	res.status(500).json(error).end()
 })
 
 app.listen(port, () => {
